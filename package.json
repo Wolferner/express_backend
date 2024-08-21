@@ -1,0 +1,36 @@
+{
+	"name": "express-backend",
+	"version": "1.0.0",
+	"description": "My playground for testing express framework.",
+	"main": "index.ts",
+	"scripts": {
+		"start": "node index.ts",
+		"dev": "nodemon index.ts"
+	},
+	"repository": {
+		"type": "git",
+		"url": ""
+	},
+	"keywords": [
+		"express",
+		"backend",
+		"nodejs",
+		"javascript",
+		"playground"
+	],
+	"author": "Maksim Scerbuk",
+	"license": "ISC",
+	"engines": {
+		"node": ">=20.0.0"
+	},
+	"dependencies": {
+		"express": "^4.19.2"
+	},
+	"devDependencies": {
+		"@types/express": "^4.17.21",
+		"@types/node": "^22.4.2",
+		"nodemon": "^3.1.4",
+		"ts-node": "^10.9.2",
+		"typescript": "^5.5.4"
+	}
+}
