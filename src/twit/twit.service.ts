@@ -4,11 +4,11 @@ export class TwitService {
 	#twits: TwitDTO[] = [
 		{
 			id: 1,
-			description: 'Hello world',
+			text: 'Hello world',
 		},
 		{
 			id: 2,
-			description: 'Goodbye world',
+			text: 'Goodbye world',
 		},
 	];
 

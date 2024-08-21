@@ -1,4 +1,4 @@
 export interface TwitDTO {
 	id: number;
-	description: string;
+	text: string;
 }

@@ -1,4 +1,5 @@
 import { Router, type Request, type Response } from 'express';
+import { twitSchema } from './twit.schema';
 import { TwitService } from './twit.service';
 
 //Controllers need only for handling requests and responses + validation
@@ -18,9 +19,12 @@ router.get('/:id', async (req: Request, res: Response) => {
 });
 
 router.post('/', async (req: Request, res: Response) => {
-	if (!req.body?.text?.length) {
-		return res.status(400).json({ message: 'Text is required' });
+	const validation = await twitSchema.safeParse(req.body);
+
+	if (!validation.success) {
+		return res.status(400).json({ message: validation.error.message });
 	}
+
 	const twits = await twitService.create(req.body);
 	res.status(201).json(twits);
 });
