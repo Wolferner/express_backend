@@ -1,4 +1,4 @@
-import express, { Express } from 'express';
+import express, { type Express } from 'express';
 import { PORT } from './config/consts';
 import { twitRouter } from './src/twit/twit.controller';
 
@@ -9,7 +9,7 @@ const port = PORT ?? 3000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-//По url /todos мы будем работать с роутером todoRouter
+//Решистрируем роутер, по url /todos мы будем работать с роутером todoRouter
 app.use('api/twits', twitRouter);
 
 //Function for starting server
