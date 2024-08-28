@@ -16,8 +16,8 @@ router.get('/', async (req: Request, res: Response) => {
 });
 
 router.get('/:id', async (req: Request, res: Response) => {
+	const { id } = req.params;
 	try {
-		const { id } = req.params;
 		const twits = await twitService.getOne(Number(id));
 		return res.status(200).json(twits);
 	} catch (error) {
@@ -27,12 +27,6 @@ router.get('/:id', async (req: Request, res: Response) => {
 
 router.post('/', async (req: Request, res: Response) => {
 	const newTwit = req.body;
-	// const validation = await twitSchema.safeParse(newTwit);
-
-	// if (!validation.success) {
-	// 	return res.status(400).json({ message: validation.error.message });
-	// }
-
 	try {
 		const twits = await twitService.create(newTwit);
 		res.status(201).json(twits);
@@ -42,16 +36,9 @@ router.post('/', async (req: Request, res: Response) => {
 });
 
 router.put('/:id', async (req: Request, res: Response) => {
+	const { id } = req.params;
+	const newTwit = req.body;
 	try {
-		const { id } = req.params;
-		const newTwit = req.body;
-		// const validation = twitSchema.safeParse(newTwit);
-		// if (!id) {
-		// 	return res.status(400).json({ message: 'Id is required' });
-		// }
-		// if (!validation.success) {
-		// 	return res.status(400).json({ message: validation.error.message });
-		// }
 		const twits = await twitService.update(Number(id), newTwit);
 		res.status(200).json(twits);
 	} catch (error) {
@@ -60,12 +47,8 @@ router.put('/:id', async (req: Request, res: Response) => {
 });
 
 router.delete('/:id', async (req: Request, res: Response) => {
+	const { id } = req.params;
 	try {
-		const { id } = req.params;
-		// if (!id) {
-		// 	return res.status(400).json({ message: 'Id is required' });
-		// }
-
 		const twits = await twitService.delete(Number(id));
 		res.status(200).json(twits);
 	} catch (error) {
